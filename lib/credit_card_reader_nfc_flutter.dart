@@ -42,7 +42,6 @@ class CreditCardReaderNfcFlutter {
       type: event['type'],
       holder: event['holder'],
       expire: event['expire'],
-      cvv: event['cvv'],
       status: event['status'],
     );
   }
