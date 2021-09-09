@@ -6,6 +6,8 @@ class CardModel {
 
   final String? expire;
 
+  final String? cvv;
+
   final String? holder;
 
   final String? type;
@@ -13,5 +15,5 @@ class CardModel {
   final String? status;
 
   const CardModel(
-      {this.number, this.expire, this.holder, this.type, this.status});
+      {this.number, this.expire,this.cvv, this.holder, this.type, this.status});
 }
