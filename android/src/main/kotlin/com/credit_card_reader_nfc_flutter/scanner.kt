@@ -36,7 +36,6 @@ class Scanner(private val plugin: CreditCardReaderNfcFlutterPlugin) : NfcAdapter
 
         var number: String? = null
         var expire: String? = null
-        var cvv: String? =null
         var holder: String? = null
         var type: String? = null
         var status: String? = null
@@ -46,15 +45,13 @@ class Scanner(private val plugin: CreditCardReaderNfcFlutterPlugin) : NfcAdapter
         if (card.track1 != null) {
             number = card.track1.cardNumber
             expire = fmt.format(card.track1.expireDate)
-            cvv = card.track1.formatCode
-            holder = card.track1.holderFirstname + " " + card.track1.holderLastname
         } else if (card.track2 != null) {
             number = card.track2.cardNumber
             expire = fmt.format(card.track2.expireDate)
         }
-//        if (card.holderFirstname != null && card.holderLastname != null) {
-//            holder = card.holderFirstname + " " + card.holderLastname
-//        }
+        if (card.holderFirstname != null && card.holderLastname != null) {
+            holder = card.holderFirstname + " " + card.holderLastname
+        }
 
         if (card.type != null) {
             type = card.type.name
@@ -72,7 +69,6 @@ class Scanner(private val plugin: CreditCardReaderNfcFlutterPlugin) : NfcAdapter
         res.put("type", type)
         res.put("number", number)
         res.put("expire", expire)
-        res.put("cvv", cvv)
         res.put("holder", holder)
         res.put("status", status)
 
